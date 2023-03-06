@@ -1,17 +1,43 @@
 package org.example;
+
+
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.Table;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
 public class Todo {
-    String title;
-    String details;
-    LocalDate dateDue;
-    LocalTime timeDue;
-    LocalDateTime dateAdded;
+
+    @Id
+    @GeneratedValue()
+    private int Id;
+    private String title;
+    private String details;
+    private LocalDate dateDue;
+    private LocalTime timeDue;
+    private LocalDateTime dateAdded;
 
     public Todo() {
         dateAdded = LocalDateTime.now();
+    }
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public LocalDateTime getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDateTime dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public String getTitle() {
